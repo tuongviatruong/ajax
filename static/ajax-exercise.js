@@ -19,8 +19,13 @@ $('#get-fortune-button').on('click', getFortune);
 
 
 // PART 2: SHOW WEATHER
+function showWeather(results){
+	console.dir(results);
+	alert("Today's forecast is: " + results['forecast']);
+}
 
-function showWeather(evt) {
+
+function getWeather(evt) {
     evt.preventDefault();
 
     let url = "/weather.json";
@@ -28,9 +33,12 @@ function showWeather(evt) {
 
 
     // TODO: request weather with that URL and show the forecast in #weather-info
+    $.get(url, formData, showWeather);
+
 }
 
-$("#weather-form").on('submit', showWeather);
+
+$("#weather-form").on('submit', getWeather);
 
 
 
